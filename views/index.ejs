@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  
+  <body>
+    <header>
+      <img id="profile" src="<%= user.profilePic %>"/>
+      <h2 id="headname" style="margin-left:10px ;">Welcome <%= user.username %>!</h2>
+      
+      <!-- <button id="logoutbtn" style="margin-right:10px;"><h2>Logout</h2></button> -->
+      <form  action="/logout" method="post">
+        <input style="display:none ;">
+        <input type="submit" value="Logout">
+      </form>
+       
+    </header>
+  <div class="container">
+     <div class="left-container">
+     
+        <h2>TASK LIST</h2>
+        <p>Add tasks to your list by typing to the right.</p>
+        <hr>
+        <div id="parent">
+          <% data.forEach(function(value){ %>
+             <p><%= value.text %></p>
+             <img id="taskPic" src="<%= value.taskPic %>"/>
+             
+             <hr>
+          <% }) %>
+        </div>
+  
+    </div>
+
+    <div class="right-container">
+      <form action="/todo" method="post" enctype="multipart/form-data">
+        <input id="input" name="text" placeholder="Enter task" required>
+        <input type="file" name="taskPic" accept="image/*" required>
+        <input id="btn" type="submit" value="save">
+      </form>
+     <!-- <textarea id="input" placeholder="I need to..." ></textarea> 
+     <button id="btn">Add Task</button> -->
+    </div>
+
+  </div>
+  
+  
+  
+  <!-- <script src="/js/todo.js"></script> -->
+  </body>
+</html>
